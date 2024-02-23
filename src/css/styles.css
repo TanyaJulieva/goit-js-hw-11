@@ -1,4 +1,13 @@
+body {
+font-family: 'Montserrat', sans serif;
+}
+
+.container {
+margin: 0 auto;
+}
+
 .form {
+  display: block;
   margin-top: 36px;
 }
 
