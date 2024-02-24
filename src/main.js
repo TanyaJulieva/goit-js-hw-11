@@ -9,16 +9,17 @@ const elem = {
   input: document.querySelector('.input-js'),
   form: document.querySelector('.form-js'),
   list: document.querySelector('.gallery-js'),
+  loader: document.querySelector('.js-loader'),
 };
 
 elem.form.addEventListener('submit', handlerSubmit);
 
 function handlerSubmit(evt) {
+  // elem.loader.classList.add('visible')
   evt.preventDefault();
 
   getImages().then(data => {
     const images = data.hits;
-    console.log(images);
 
     if (images.length === 0) {
       iziToast.show({
@@ -30,8 +31,22 @@ function handlerSubmit(evt) {
       return;
     }
 
-    elem.list.insertAdjacentHTML('beforeend', createMarkup(images));
+    elem.list.innerHTML = createMarkup(images);
+    
+
+    const gallery = new SimpleLightbox('.gallery a', {
+      captionsData: 'alt',
+      captionDelay: 250,
+    });
+
+    gallery.refresh()
   });
-  
+
+  elem.loader.classList.remove('visible')
+
+  console.log(elem.loader.classList);
+
+
   evt.currentTarget.reset()
 }
+
