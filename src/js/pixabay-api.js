@@ -12,20 +12,17 @@ function getImages() {
 
   return fetch(link)
     .then(response => {
-      console.log(response);
       if (!response.ok) {
         throw new Error('Image error!');
       }
       return response.json();
     })
+
     .catch(error => {
-      iziToast.show({
-        message:
-          'Sorry, there are no images matching your search query. Please try again!',
-        backgroundColor: '#EF4040',
-        messageColor: '#FAFAFB',
-      });
+      alert('Error while fetching images from pixabay!');
     });
 }
+
+
 
 export { getImages };

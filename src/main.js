@@ -11,11 +11,27 @@ const elem = {
   list: document.querySelector('.gallery-js'),
 };
 
-
-elem.form.addEventListener('submit', handlerSubmit)
+elem.form.addEventListener('submit', handlerSubmit);
 
 function handlerSubmit(evt) {
-    evt.preventDefault();
+  evt.preventDefault();
 
-    createMarkup()
+  getImages().then(data => {
+    const images = data.hits;
+    console.log(images);
+
+    if (images.length === 0) {
+      iziToast.show({
+        message:
+          'Sorry, there are no images matching your search query. Please try again!',
+        backgroundColor: '#EF4040',
+        messageColor: '#FAFAFB',
+      });
+      return;
+    }
+
+    elem.list.insertAdjacentHTML('beforeend', createMarkup(images));
+  });
+  
+  evt.currentTarget.reset()
 }

@@ -1,14 +1,46 @@
-body {
-font-family: 'Montserrat', sans serif;
+
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.link {
+  text-decoration: none;
+}
+
+body {
+  font-family: 'Montserrat', sans serif;
+  }
 
 .container {
 margin: 0 auto;
+padding: 36px 156px;
 }
 
 .form {
-  display: block;
-  margin-top: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 32px;
 }
 
 .form-input {
@@ -25,11 +57,25 @@ border-color: #000000;
 }
 
 .form-btn {
-  margin-left: 8px;
   padding: 8px 16px;
   background-color: #4E75FF;
   color: #FFFFFF;
   border-radius: 8px;
   border-style: none;
   font-size: 16px;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.actions {
+  display: flex;
+  font-size: 12px;
+}
+
+.actions-name {
+  font-weight: 600;
 }

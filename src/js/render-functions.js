@@ -1,4 +1,5 @@
-import { getImages } from './pixabay-api';
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
 
 const elem = {
   input: document.querySelector('.input-js'),
@@ -6,32 +7,33 @@ const elem = {
   list: document.querySelector('.gallery-js'),
 };
 
-function createMarkup() {
-    getImages().then(data => {
-        elem.list.innerHTML = data.hits
-          .map(({ webformatURL, tags, likes, views, comments, downloads }) => {
-            return `<li>
-             <img src="${webformatURL}" alt="${tags}">
-             <div>
-               <h2>Likes</h2>
-               <p>${likes}</p>
-             </div>
-             <div>
-               <h2>Views</h2>
-               <p>${views}</p>
-             </div>
-             <div>
-               <h2>Comments</h2>
-               <p>${comments}</p>
-             </div>
-             <div>
-               <h2>Downloads</h2>
-               <p>${downloads}</p>
-             </div>
-           </li>`;
-          })
-          .join();
-      });
+function createMarkup(arr) {
+       return arr.map(({ webformatURL, largeImageURL, tags, likes, views, comments, downloads }) => 
+          `<li>
+          <a href="${largeImageURL}">
+            <img src="${webformatURL}" alt="${tags}" width="360">
+          </a>
+          <div class="actions">
+            <div>
+              <h2 class="actions-name">Likes</h2>
+              <p class="quantity">${likes}</p>
+            </div>
+            <div>
+              <h2 class="actions-name">Views</h2>
+              <p class="quantity">${views}</p>
+            </div>
+            <div>
+              <h2 class="actions-name">Comments</h2>
+              <p class="quantity">${comments}</p>
+            </div>
+            <div>
+              <h2 class="actions-name">Downloads</h2>
+              <p class="quantity">${downloads}</p>
+            </div>
+          </div>
+        </li>`
+          )
+          .join('');
 }
  
 
