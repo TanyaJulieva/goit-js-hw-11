@@ -15,8 +15,9 @@ const elem = {
 elem.form.addEventListener('submit', handlerSubmit);
 
 function handlerSubmit(evt) {
-  // elem.loader.classList.add('visible')
+  elem.loader.classList.add('visible')
   evt.preventDefault();
+  console.dir(evt.currentTarget);
 
   getImages().then(data => {
     const images = data.hits;
@@ -42,9 +43,9 @@ function handlerSubmit(evt) {
     gallery.refresh()
   });
 
-  elem.loader.classList.remove('visible')
+  // elem.loader.classList.remove('visible')
 
-  console.log(elem.loader.classList);
+  // console.log(elem.loader.classList);
 
 
   evt.currentTarget.reset()
