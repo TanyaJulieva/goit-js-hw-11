@@ -2,6 +2,7 @@ const elem = {
   input: document.querySelector('.input-js'),
   form: document.querySelector('.form-js'),
   list: document.querySelector('.gallery-js'),
+  loader: document.querySelector('.js-loader'),
 };
 
 function getImages() {
@@ -20,7 +21,8 @@ function getImages() {
 
     .catch(error => {
       alert('Error while fetching images from pixabay!');
-    });
+    })
+    .finally(()=> elem.loader.remove())
 }
 
 

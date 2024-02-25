@@ -1,18 +1,16 @@
 .loader {
-  visibility: hidden;
   width: 48px;
   height: 48px;
+  border: 5px solid #6c8cff;
+  border-bottom-color: transparent;
   border-radius: 50%;
   display: inline-block;
-  border-top: 3px solid #808080;
-  border-right: 3px solid transparent;
   box-sizing: border-box;
   animation: rotation 1s linear infinite;
   position: absolute;
-  top: 15%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  transition: 0.5s;
 }
 
 @keyframes rotation {
@@ -24,8 +22,8 @@
   }
 }
 
-.visible {
-  visibility: visible;
+.hidden {
+  visibility: hidden;
 }
 
 ul {
@@ -75,22 +73,32 @@ body {
   width: 272px;
   height: 40px;
   padding-left: 16px;
-  border-color: #808080;
+  outline: transparent;
+  outline-offset: -1px;
+  border: 1px solid #808080;
   border-radius: 4px;
   font-size: 16px;
 }
 
 .form-input:hover {
-  border-color: #000000;
+  outline: 1px solid #000000;
+}
+.form-input:focus {
+  outline: 1px solid #4E75FF;
 }
 
 .form-btn {
+  height: 40px;
   padding: 8px 16px;
   background-color: #4e75ff;
   color: #ffffff;
   border-radius: 8px;
   border-style: none;
   font-size: 16px;
+}
+
+.form-btn:hover {
+  background-color: #6C8CFF;
 }
 
 .gallery {

@@ -12,10 +12,12 @@ const elem = {
   loader: document.querySelector('.js-loader'),
 };
 
+elem.loader.classList.add('hidden')
+
 elem.form.addEventListener('submit', handlerSubmit);
 
 function handlerSubmit(evt) {
-  elem.loader.classList.add('visible')
+  elem.loader.classList.remove('hidden')
   evt.preventDefault();
   console.dir(evt.currentTarget);
 
