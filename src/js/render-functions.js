@@ -21,7 +21,7 @@ function createMarkup(arr) {
       }) =>
         `<li>
         <a href="${largeImageURL}">
-          <img src="${webformatURL}" alt="${tags}" width="360" hight="200" />
+          <img src="${webformatURL}" alt="${tags}" width="360"/>
         </a>
         <ul class="actions">
             <li class="action">

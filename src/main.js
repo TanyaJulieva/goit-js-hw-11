@@ -19,23 +19,26 @@ elem.form.addEventListener('submit', handlerSubmit);
 function handlerSubmit(evt) {
   elem.loader.classList.remove('hidden')
   evt.preventDefault();
-  console.dir(evt.currentTarget);
+ elem.list.childElementCount === 0
+
 
   getImages().then(data => {
     const images = data.hits;
 
     if (images.length === 0) {
+      elem.list.childElementCount === 0
       iziToast.show({
         message:
           'Sorry, there are no images matching your search query. Please try again!',
         backgroundColor: '#EF4040',
         messageColor: '#FAFAFB',
+        position: 'bottomCenter',
       });
       return;
     }
 
     elem.list.innerHTML = createMarkup(images);
-    
+    console.dir(elem.list.childElementCount);
 
     const gallery = new SimpleLightbox('.gallery a', {
       captionsData: 'alt',
@@ -44,10 +47,6 @@ function handlerSubmit(evt) {
 
     gallery.refresh()
   });
-
-  // elem.loader.classList.remove('visible')
-
-  // console.log(elem.loader.classList);
 
 
   evt.currentTarget.reset()
