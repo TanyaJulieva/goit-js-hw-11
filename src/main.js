@@ -12,21 +12,21 @@ const elem = {
   loader: document.querySelector('.js-loader'),
 };
 
-elem.loader.classList.add('hidden')
+elem.loader.classList.add('hidden');
 
 elem.form.addEventListener('submit', handlerSubmit);
 
 function handlerSubmit(evt) {
-  elem.loader.classList.remove('hidden')
+  elem.loader.classList.remove('hidden');
   evt.preventDefault();
- elem.list.childElementCount === 0
-
 
   getImages().then(data => {
     const images = data.hits;
+    if (elem.list.childElementCount > 0) {
+      elem.list.innerHTML = '';
+    }
 
     if (images.length === 0) {
-      elem.list.childElementCount === 0
       iziToast.show({
         message:
           'Sorry, there are no images matching your search query. Please try again!',
@@ -38,17 +38,14 @@ function handlerSubmit(evt) {
     }
 
     elem.list.innerHTML = createMarkup(images);
-    console.dir(elem.list.childElementCount);
 
     const gallery = new SimpleLightbox('.gallery a', {
       captionsData: 'alt',
       captionDelay: 250,
     });
 
-    gallery.refresh()
+    gallery.refresh();
   });
 
-
-  evt.currentTarget.reset()
+  evt.currentTarget.reset();
 }
-
